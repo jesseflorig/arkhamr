@@ -21,4 +21,8 @@ kadira:blaze-layout
 aldeed:collection2
 reactive-var
 reactive-dict
-twbs:bootstrap
+accounts-ui
+accounts-twitter
+twbs:bootstrap-noglyph
+fortawesome:fontawesome
+accounts-base
