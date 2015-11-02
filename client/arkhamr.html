@@ -1,0 +1,61 @@
+<head>
+  <title>Arkhamr</title>
+</head>
+
+<template name="appLayout">
+  {{#if authInProcess}}
+    <p>loading ...</p>
+  {{else}}
+    {{#if currentUser}}
+      {{> boardLayout}}
+    {{else}}
+      {{> loginLayout}}
+    {{/if}}
+  {{/if}}
+</template>
+
+<template name="loginLayout">
+  <div class="jumbo">
+    <h1>Welcome to Arkhamr</h1>
+    {{> loginButton}}
+  </div>
+</template>
+
+<template name="loginButton">
+  <button class="btn btn-lg btn-info">
+    <i class="fa fa-twitter"></i>&nbsp;Sign In With Twitter
+  </button>
+</template>
+
+<template name="boardLayout">
+  {{> header}}
+  <h2>The board stuff</h2>
+</template>
+
+<template name="header">
+  <div class="navbar navbar-default">
+    <div class="container-fluid">
+      <ul class="nav navbar-nav pull-right">
+        {{> userDropdown}}
+      </ul>
+    </div>
+  </div>
+</template>
+
+<template name="userDropdown">
+  {{#if logginIn}}
+    <li><a>Logging in...</a></li>
+  {{else}}
+    <li class="dropdown">
+      <a class="dropdown-toggle" data-toggle="dropdown">
+        <img src="{{currentUser.profile.avatar_url}}" alt="" class="nav-avatar" />
+        <i class="fa fa-caret-down"></i>
+      </a>
+      <ul class="dropdown-menu dropdown-menu-right">
+        <li><a></a></li>
+        <li class="divider"></li>
+        <li><a id="logout">Log out</a></li>
+      </ul>
+    </li>
+  {{/if}}
+</template>
