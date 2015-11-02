@@ -3,28 +3,7 @@
 </head>
 
 <template name="appLayout">
-  {{#if authInProcess}}
-    <p>loading ...</p>
-  {{else}}
-    {{#if currentUser}}
-      {{> boardLayout}}
-    {{else}}
-      {{> loginLayout}}
-    {{/if}}
-  {{/if}}
-</template>
-
-<template name="loginLayout">
-  <div class="jumbo">
-    <h1>Welcome to Arkhamr</h1>
-    {{> loginButton}}
-  </div>
-</template>
-
-<template name="loginButton">
-  <button class="btn btn-lg btn-info">
-    <i class="fa fa-twitter"></i>&nbsp;Sign In With Twitter
-  </button>
+  {{> boardLayout}}
 </template>
 
 <template name="boardLayout">
@@ -35,21 +14,44 @@
 <template name="header">
   <div class="navbar navbar-default">
     <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand">Arkhamr</a>
+      </div>
+      <ul class="nav navbar-nav">
+        {{> gameThresholds}}
+      </ul>
       <ul class="nav navbar-nav pull-right">
-        {{> userDropdown}}
+        {{> settingsDropdown}}
       </ul>
     </div>
   </div>
 </template>
 
-<template name="userDropdown">
+<template name="gameThresholds">
+  <li class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown">
+      1 Player
+    </a>
+    <ul class="dropdown-menu">
+      <li><a>1</a></li>
+      <li><a>2</a></li>
+      <li><a>3</a></li>
+      <li><a>4</a></li>
+      <li><a>5</a></li>
+      <li><a>6</a></li>
+      <li><a>7</a></li>
+      <li><a>8</a></li>
+    </ul>
+  </li>
+</template>
+
+<template name="settingsDropdown">
   {{#if logginIn}}
     <li><a>Logging in...</a></li>
   {{else}}
     <li class="dropdown">
       <a class="dropdown-toggle" data-toggle="dropdown">
-        <img src="{{currentUser.profile.avatar_url}}" alt="" class="nav-avatar" />
-        <i class="fa fa-caret-down"></i>
+        <i class="fa fa-gears"></i>
       </a>
       <ul class="dropdown-menu dropdown-menu-right">
         <li><a></a></li>
